@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'editor.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'variaciones.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'fuente.css' %}">
+    <link rel="logo" href="{% static 'logo.png' %}">
+    <script src="https://kit.fontawesome.com/f74f7c6a6d.js" crossorigin="anonymous"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href=" " rel="icon" class="logo"><img src="{% static 'logo.png' %}" alt="logo agrosuper"></a>
+            <button class="nav-toggle" aria-label="Abrir menu"> 
+                <i class="fa-solid fa-bars"></i> 
+            </button>
+            <ul class="nav-menu">
+                <!--li.nav-menu-item*4>a.menu.link-->
+                <li class="nav-menu-item">
+                    <a href="{% url 'carnes' %}" class="nav-menu-link nav-link">Carnes</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'variaciones' %}" class="nav-menu-link nav-link">Ver Variaciones</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'editor' %}" class="nav-menu-link nav-link">Editor Semanal</a>
+                </li>
+                <li class="nav-menu-item">
+                    <a href="{% url 'salir' %}" class="nav-menu-link nav-link">Cerrar sesión</a>
+                </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenido_pag">
+        <aside>
+            <nav class="aside">
+                <ul class="list">
+                    {%block asidebar%}
+                    {%endblock%}
+                </ul>
+            </nav>
+
+        </aside>
+        <div class="content">
+            <div class="container">
+                {% block carnes %}
+                {% endblock %}
+            </div>
+            <div class="container">
+                {% block variaciones %}
+                {% endblock %}
+            </div>
+            <div class="container">
+                {% block editor %}
+                {% endblock %}
+            </div>
+            <div class="container">
+                {% block editarVariable %}
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+        
+     
+    <script src="../static/desplegables_asdide.js"></script>
+    <script>
+        const navToggle = document.querySelector(".nav-toggle")
+        const navMenu = document.querySelector(".nav-menu")
+
+        navToggle.addEventListener("click", () =>{
+            navMenu.classList.toggle("nav-menu_visible")
+        });
+    </script>
+</body>

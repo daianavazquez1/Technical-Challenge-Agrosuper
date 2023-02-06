@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% load static %}
+{%block asidebar%}
+<li class="list__item">
+    <div class="list__button">
+        <img src="../static/iconos_animales/pollo.png" class="list__img">
+        <a href="#" class="nav__link">Pollos</a>
+    </div>
+</li> 
+<li class="list__item">
+    <div class="list__button">
+        <img src="../static/iconos_animales/cerdo.png" class="list__img">
+        <a href="#" class="nav__link">Cerdos</a>
+    </div>
+</li> 
+<li class="list__item">
+    <div class="list__button">
+        <img src="../static/iconos_animales/pavo.png" class="list__img">
+        <a href="#" class="nav__link">Pavos</a>
+    </div>
+</li> 
+<li class="list__item">
+    <div class="list__button">
+        <img src="../static/iconos_animales/otros.png" class="list__img">
+        <a href="#" class="nav__link">Procesados</a>
+    </div>
+</li> 
+<li class="list__item">
+    <div class="list__button">
+        <img src="../static/iconos_animales/salmon.png" class="list__img">
+        <a href="#" class="nav__link">Otros</a>
+    </div>
+</li> 
+{%endblock%}
+{% block variaciones %}
+<div class="tabla">
+    <table class="content-table">
+        <thead>
+            <tr>
+               <th>Linea</th>
+               <th>ropSemAnt</th>
+               <th>ropSemActual</th>
+               <th>rop</th>
+               <th>Ventas</th>
+               <th>Costo de Ventas</th>
+               <th>GAV</th>
+               <th>Toneladas Total </th>
+               <th>Volumen Nacional </th>
+               <th>Volumen de Exportación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for var in variaciones %}
+            <tr>
+                <td>{{ var.linea }}</td>
+                <td>{{ var.ropSemAnt }}</td>
+                <td>{{ var.ropSemActual }}</td>
+                <td>{{ var.rop }}</td>
+                <td>{{ var.ventas }}</td>
+                <td>{{ var.costoVentas }}</td>
+                <td>{{ var.GAV }}</td>
+                <td>{{ var.toneladasTotal }}</td>
+                <td>{{ var.volNacional }}</td>
+                <td>{{ var.volExport }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="notas">
+    <textarea id="myArea" cols="30" rows="10" placeholder="Tome sus notas aquí."></textarea>
+    <button onclick="copy()">
+        <span id="copy-btn">Copy</span>
+    </button>
+</div>
+<script>
+    function copy(){
+        let copyArea=document.querySelector(".notas");
+        let text = document.getElementById("myArea");
+        text.select();
+        document.execCommand("copy");
+        document.getElementById("copy-btn").style.display="none";
+        copyArea.classList.add("active");
+        window.getSelection().removeAllRanges();
+        setTimeout(() => {
+            document.getElementById("copy-btn").style.display="block";
+            copyArea.classList.remove("activate");
+        }, 2500);
+    }
+</script>
+{% endblock %}

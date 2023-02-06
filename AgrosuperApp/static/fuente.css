@@ -1,0 +1,20 @@
+
+@font-face {
+    font-family: Gotham-negrita;
+    src: url(fuente/Gotham-Bold.otf);
+}
+
+@font-face {
+    font-family: Gotham-negrita-cursiva;
+    src: url(fuente/Gotham-UltraItalic.otf);
+}
+
+@font-face {
+    font-family: Gotham-light;
+    src: url(fuente/Gotham-Light.otf);
+}
+
+@font-face {
+    font-family: Gotham-light-cursiva;
+    src: url(fuente/Gotham-BookItalic.otf);
+}

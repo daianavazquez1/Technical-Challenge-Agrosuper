@@ -1,0 +1,56 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block asidebar %}
+<li class="list__item list__item--click">
+    <div class="list__button list__button--click">
+        <img src="../static/assets/docs.svg" class="list__img">
+        <a href="#" class="nav__link">Reporte</a>
+    </div>
+</li>
+{% endblock %}
+{% block editor %}
+
+<div class="row">
+    <div class="col-80porciento">
+        <div class="tabla">
+            <table class="content-table">
+                <thead>
+                    <tr>
+                       <th>Nombre Variables</th>
+                       <th>Anterior</th>
+                       <th>Actual</th>
+                       <th>Variación Porcentual</th>
+                       <th>Estatus</th>
+                       <th>Editar Variable</th>
+                       <th> Ok </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for dicc in diccionarios %}
+                    <tr>
+                        <td>{{ dicc.nombre_var }}</td>
+                        <td>{{ dicc.anterior }}</td>
+                        <td>{{ dicc.actual }}</td>
+                        <td>{{ dicc.variacion_porc }}</td>
+                        <td>{% if dicc.status == "rojo" %}
+                                <img src="../static/semaforo/semaforo_rojo.png" alt="">
+                            {% elif dicc.status == "amarillo" %}
+                                <img src="../static/semaforo/semaforo_amarillo.png" alt="">
+                            {% elif dicc.status == "verde" %}
+                                <img src="../static/semaforo/semaforo_verde.png" alt="">
+                            {% endif %}
+                        </td>
+                        <td><a href="{% url 'editaryprobar' %}">Editar</a></td>
+                        <td>
+                            <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="">
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}-*
